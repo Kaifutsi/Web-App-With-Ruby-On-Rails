@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List of Bookings</title>
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <style>
+    /* Add specific styles for the list of bookings page */
+    .price-list {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .price-list h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .price-list ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .price-list li {
+      font-size: 18px;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .back-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .back-link a {
+      text-decoration: none;
+      color: #252525;
+      font-weight: bold;
+      border: 1px solid #252525;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .back-link a:hover {
+      background-color: #252525;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container price-list">
+    <h1>List of Bookings</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Booking Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.name %></td>
+            <td><%= booking.email %></td>
+            <td>
+              <% if booking.booking_date.present? %>
+                <%= booking.booking_date.strftime("%Y-%m-%d %H:%M:%S") %>
+              <% else %>
+                N/A
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="back-link">
+      <%= link_to 'Back to Manicure', manicure_path(@manicure) %>
+    </div>
+  </div>
+</body>
+</html>

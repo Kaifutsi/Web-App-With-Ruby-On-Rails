@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Us</title>
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <style>
+    .about-details {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 60px auto;
+      max-width: 800px; /* Adjust the width as needed */
+    }
+
+    .about-details h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .about-image {
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-height: 400px; /* Adjust the height as needed */
+      margin: 20px 0;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-text {
+      font-size: 18px;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+    }
+
+    .quote-container {
+      background-color: #f2f2f2;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .quote {
+      font-size: 24px;
+      font-weight: bold;
+      color: #1a1a1a;
+    }
+
+    .inspiration-text {
+      font-size: 18px;
+      color: #1a1a1a;
+      margin: 20px 0;
+    }
+
+    .back-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .back-link a {
+      text-decoration: none;
+      color: #252525;
+      font-weight: bold;
+      border: 1px solid #252525;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .back-link a:hover {
+      background-color: #252525;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container about-details">
+    <h1>About Us</h1>
+
+    <div class="about-text">
+      At Beauty Mind, we do more than just manicures. We create art that you can wear with pride. Our team of professional nail artists is dedicated to helping you express your uniqueness, enrich your style, and accentuate your beauty. We strive for perfection in every detail and guarantee that you will look and feel your best.
+    </div>
+
+    <div class="quote-container">
+      <div class="quote">
+        "Beauty is the art of being yourself."
+      </div>
+    </div>
+
+    <div class="about-image">
+      <img src="/assets/about1.jpg" alt="About Us">
+    </div>
+
+    <div class="inspiration-text">
+      We believe that true beauty lies in self-confidence, in being yourself, and in reflecting your uniqueness. Our services help you gain this confidence and express your inner beauty outwardly. Let us make you even more beautiful.
+    </div>
+
+    <div class="back-link">
+      <a href="/services">Our Services</a>
+      <%= link_to 'Home', root_path %>
+    </div>
+  </div>
+</body>
+</html>

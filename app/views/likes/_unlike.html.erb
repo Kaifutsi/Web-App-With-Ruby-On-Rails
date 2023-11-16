@@ -1,0 +1,5 @@
+<%= form_with(model: like, url: image_like_path(image, like), method: :delete, remote: true) do |form| %>
+  <button type="submit" class="unlike-button">
+    <span class="heart-icon liked">&#9829;</span>
+  </button>
+<% end %>

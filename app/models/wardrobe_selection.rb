@@ -1,0 +1,2 @@
+class WardrobeSelection < ApplicationRecord
+end

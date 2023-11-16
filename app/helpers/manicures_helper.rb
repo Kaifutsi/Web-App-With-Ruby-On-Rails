@@ -1,0 +1,2 @@
+module ManicuresHelper
+end

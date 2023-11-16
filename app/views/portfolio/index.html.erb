@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Portfolio</title>
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <style>
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .image-container img {
+      max-width: 200px;
+      height: auto;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.2);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-link a {
+      text-decoration: none;
+      color: #252525;
+      font-weight: bold;
+      border: 1px solid #252525;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .back-link a:hover {
+      background-color: #252525;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Portfolio</h1>
+
+    <div class="image-container">
+      <% @images.each do |image| %>
+        <div class="portfolio-image">
+          <%= image_tag(image.url, alt: image.description) %>
+          <% if current_user.liked?(image) %>
+            <%= render 'likes/unlike', like: image.likes.find_by(user: current_user), image: image %>
+          <% else %>
+            <%= render 'likes/like', image: image, liked: current_user.liked?(image) %>
+          <% end %>
+          <%= render 'likes/like_count', image: image %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="back-link">
+      <%= link_to 'Home', root_path %>
+    </div>
+  </div>
+</body>
+</html>

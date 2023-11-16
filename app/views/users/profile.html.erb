@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile</title>
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <style>
+    .profile-container {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 60px auto;
+      max-width: 600px;
+    }
+
+    .profile h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .profile p {
+      font-size: 18px;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .back-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .back-link a {
+      text-decoration: none;
+      color: #252525;
+      font-weight: bold;
+      border: 1px solid #252525;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .back-link a:hover {
+      background-color: #252525;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container profile-container">
+    <h1>Profile</h1>
+    <p><strong>Email:</strong> <%= current_user.email %></p>
+    <div class="back-link">
+      <%= link_to 'Back', dashboard_path %>
+    </div>
+  </div>
+</body>
+</html>

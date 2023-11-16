@@ -1,0 +1,5 @@
+<%= form_with(model: [image, Like.new], remote: true) do |form| %>
+  <button type="submit" class="like-button">
+    <span class="heart-icon <% if current_user.liked?(image) %>liked<% end %>">&#9829;</span>
+  </button>
+<% end %>

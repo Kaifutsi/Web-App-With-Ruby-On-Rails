@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manicure Details</title>
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <style>
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 60px auto;
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      color: #1a1a1a;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="datetime-local"] {
+      width: 93%;
+      color: #1a1a1a;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #252525;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #1a1a1a;
+    }
+
+    .back-link {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: #252525;
+      font-weight: bold;
+      border: 1px solid #252525;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    a:hover {
+      background-color: #252525;
+      color: #fff;
+    }
+
+    .center-button {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+    .book-button {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      background-color: #e6e3e0;
+      color: #252525;
+      border: 1px solid #252525;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      display: inline-block;
+    }
+
+    .book-button:hover {
+      background-color: #252525;
+      color: #f5f4f4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><%= @manicure.name %></h1>
+
+    <p><b>Description: </b><%= @manicure.description %></p>
+    <p><b>Price: </b><%= number_to_currency(@manicure.price) %></p>
+
+    <% if @manicure.available %>
+      <p class="availability"><b>Availability: </b>Available for booking.</p>
+      <%= form_for([@manicure, @booking], class: "booking-form") do |f| %>
+        <div class="field">
+          <%= f.label :name, 'Your name' %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :email, 'Your email' %>
+          <%= f.email_field :email %>
+        </div>
+        <div class="field">
+          <%= f.label :booking_date, 'Booking date and time' %>
+          <%= f.datetime_field :booking_date %>
+        </div>
+        <div class="actions">
+        <div class="center-button">
+          <%= f.submit 'Book', class: "book-button" %>
+        </div>
+      </div>
+      <% end %>
+    <% else %>
+      <p class="availability">Availability: Unavailable for booking</p>
+    <% end %>
+    <% if @booking.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@booking.errors.count, 'Error') %></h2>
+        <ul>
+          <% @booking.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="back-link">
+      <% if current_user.admin? %>
+        <%= link_to 'Bookings', manicure_bookings_path(@manicure) %>
+      <% end %>
+      <%= link_to 'Back', manicures_path %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Service Descriptions</title>
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Service Descriptions</h1>
+
+    <% @descriptions.each do |service, description| %>
+      <h2><%= service.to_s.titleize %></h2>
+      <p><%= description %></p>
+    <% end %>
+
+    <div class="back-link">
+      <%= link_to 'Back to Services', services_path %>
+    </div>
+  </div>
+</body>
+</html>
