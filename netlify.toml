@@ -1,6 +1,14 @@
 [build]
-  command = "bundle exec rake assets:precompile"
-  publish = "public"
+  command = "bundle exec jekyll build"  # Замените эту команду на команду для сборки вашего проекта
 
 [context.production.environment]
   RAILS_ENV = "production"
+  NODE_ENV = "production"
+
+[context.split1]
+  command = "bundle exec jekyll build --config _config.split1.yml"  # Замените эту команду на команду для сборки вашего проекта в разделенном контексте
+  environment = { SPLIT: "1" }
+
+[context.deploy-preview]
+  command = "bundle exec jekyll build --config _config.deploy-preview.yml"  # Замените эту команду на команду для сборки вашего проекта в контексте предварительного просмотра развертывания
+  environment = { DEPLOY_PREVIEW: "true" }
