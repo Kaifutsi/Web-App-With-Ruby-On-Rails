@@ -1,0 +1,6 @@
+[build]
+  command = "bundle exec rake assets:precompile"
+  publish = "public"
+
+[context.production.environment]
+  RAILS_ENV = "production"
