@@ -1,0 +1,6 @@
+[build]
+  command = "bundle exec jekyll build"
+  publish = "public"
+
+[context.production.environment]
+  JEKYLL_ENV = "production"
