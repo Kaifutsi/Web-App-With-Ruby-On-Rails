@@ -16,7 +16,7 @@ class ManicuresController < ApplicationController
 
     def show
       @manicure = Manicure.find(params[:id])
-      @booking = @manicure.bookings.new # Создаем новый объект бронирования
+      @booking = @manicure.bookings.new
     end
 
     def edit
