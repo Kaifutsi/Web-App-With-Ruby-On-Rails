@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
     @booking = @manicure.bookings.new(booking_params)
     if @booking.save
       flash[:success] = 'Booking successfully created.'
-      redirect_to manicures_path # Перенаправление на список маникюров
+      redirect_to manicures_path
     else
       render 'manicures/show'
     end
