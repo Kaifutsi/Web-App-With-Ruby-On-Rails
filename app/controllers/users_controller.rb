@@ -6,10 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # Handle successful registration, e.g., redirect to dashboard
       redirect_to dashboard_path
     else
-      # Handle registration failure, e.g., show error messages
       render 'new'
     end
   end
